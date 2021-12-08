@@ -10,7 +10,8 @@ task installGenerators(type: NpmTask) {
 task listGenerators(type: NpxTask, dependsOn: installGenerators) {
     command = "gen-jmix-front"
     workingDir = file("generation")
-    args = ["list", "-s", "generators.json"]
+    args = ["list", "-s", "generators.json",
+            "--custom-generator-paths", "node_modules/@haulmont/jmix-generator-example/dist"]
 }
 
 task buildFrontend(type: NpmTask, dependsOn: npmInstall) {
